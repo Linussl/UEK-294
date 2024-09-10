@@ -16,6 +16,36 @@
   src: url(kJF1BvYX7BgnkSrUwT8OhrdQw4oELdPIeeII9v6oDMzByHX9rA6RzaxHMPdY43zj-jCxv3fzvRNU22ZXGJpEpjC_1n-q_4MrImHCIJIZrDCvHOej.woff2) format('woff2');
 }
 
+/*Bei Handys die Farbe black in den settings haben*/
+@media (prefers-color-scheme: dark){
+  body{
+    background-color: black;
+    color: white;
+  }
+}
+
+/* bildschirmgrössen von 0 bis 600px background blue*/
+@media (max-width: 600px) {
+  body {
+    background-color: blue;
+  }
+}
+
+/*bildschirmgrössen von 601 bis 1200px background red*/
+@media (max-width: 1200px) and (min-width: 601px) {
+  body {
+    background-color: red;
+  }
+}
+
+/* bildschirmgrössen von 1201 bis 1800 background green*/
+@media (max-width: 1800px) and (min-width: 1201px) {
+  body {
+    background-color: green;
+  }
+}
+
+
 .material-symbols-outlined {
   font-family: 'Material Symbols Outlined';
   font-weight: normal;
