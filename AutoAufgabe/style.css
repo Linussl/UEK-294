@@ -1,0 +1,56 @@
+/* Globale Schriftart */
+body {
+    font-family: 'Roboto', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+ 
+/* Navbar-Logo */
+nav .brand-logo {
+    font-size: 20px;
+    padding-left: 20px;
+}
+ 
+/* Tabelle Container */
+.container {
+    margin-top: 20px;
+}
+ 
+/* Tabellenstil */
+table {
+    margin-top: 20px;
+    width: 100%;
+}
+ 
+thead {
+    background-color: #FFB74D; /* Helleres Orange für Kopfzeile */
+    color: white;
+}
+ 
+th, td {
+    padding: 12px;
+    text-align: center;
+}
+ 
+td {
+    background-color: #FFE0B2; /* Hellere Zeilenfarbe */
+}
+ 
+tr:nth-child(even) td {
+    background-color: #FFCC80; /* Alternative Zeilenfarbe */
+}
+ 
+/* Action-Buttons */
+.btn-floating {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 5px;
+}
+ 
+.fixed-action-btn {
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
+ 

@@ -32,8 +32,26 @@
 // console.log(durchmesser(5));
 
 
-$('#text').html('Hallo Welt mit JQUERY');
+// $('#text').html('Hallo Welt mit JQUERY');
+// $('#text').addClass('blue');
+// $('#text').removeClass('yellow');
 
-$('#text').addClass('blue');
+// $('#text')
+//     .html('Hallo Welt mit jQuery')
+//     .addClass('blue')
+//     .removeClass('yellow')
+//     .on('click', function(){
+//         console.log('click')
+//         $(this).toggleClass('red')
+//     });
 
-$('#text').removeClass('yellow');
+$.getJSON("data.json", function (response) {
+       //console.log(response);
+        $.get("template.hbs", function(template){
+        //console.log(template);
+        var compiled = Handlebars.compile(template);
+        var html = compiled(response);
+       //console.log(html);
+        $('main').append(html);
+    });
+});

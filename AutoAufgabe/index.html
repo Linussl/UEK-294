@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fahrzeugverwaltung</title>
+   
+    <!-- Materialize CSS einbinden -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <!-- Google Fonts für Symbole und Roboto -->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css"> <!-- Dein externes CSS -->
+
+    
+    <!--JQUERY-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+    <script src="index.js"></script>
+
+</head>
+<body>
+    <!-- Navbar Header -->
+    <nav class="orange lighten-2">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">LOGO</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="https://materializecss.com/about.html" target="_blank">MATERIALIZE CSS</a></li>
+                <li><a href="#" class="blue-text text-darken-2">GEEKLAPS</a></li>
+                <li><a href="#" class="red-text text-accent-3">MOODLE</a></li>
+            </ul>
+        </div>
+    </nav>
+ 
+    <!-- Table Container -->
+    <div class="container">
+        <table class="highlight centered" id="meins">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>kraftstoff</th>
+                    <th>farbe</th>
+                    <th>bauart</th>
+                    <th>tank</th>
+                    <th>action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr data-id="6">
+                    <td>1</td>
+                    <td>Passat</td>
+                    <td>Diesel</td>
+                    <td style="background-color: #000000; color: white;">#000000</td>
+                    <td>Limousine</td>
+                    <td>0</td>
+                    <td>
+                        <a href="#" class="btn-floating blue"><i class="material-icons">directions_car</i></a>
+                        <a href="#" class="btn-floating green"><i class="material-icons">edit</i></a>
+                        <a href="#" class="btn-floating red"><i class="material-icons">delete</i></a>
+                    </td>
+                </tr>
+                <tr data-id="7">
+                    <td>2</td>
+                    <td>Opel</td>
+                    <td>Benzin</td>
+                    <td style="background-color: #008888; color: white;">#008888</td>
+                    <td>SUV</td>
+                    <td>0</td>
+                    <td>
+                        <a href="#" class="btn-floating blue"><i class="material-icons">directions_car</i></a>
+                        <a href="#" class="btn-floating green"><i class="material-icons">edit</i></a>
+                        <a href="#" class="btn-floating red"><i class="material-icons">delete</i></a>
+                    </td>
+                </tr>
+                <tr data-id="8 ">
+                    <td>3</td>
+                    <td>VW</td>
+                    <td>Elektro</td>
+                    <td style="background-color: #006666; color: white;">#006666</td>
+                    <td>Pickup</td>
+                    <td>0</td>
+                    <td>
+                        <a href="#" class="btn-floating blue"><i class="material-icons">directions_car</i></a>
+                        <a href="#" class="btn-floating green"><i class="material-icons">edit</i></a>
+                        <a href="#" class="btn-floating red"><i class="material-icons">delete</i></a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+ 
+    <!-- Floating Action Button -->
+    <div class="fixed-action-btn">
+        <a class="btn-floating btn-large red">
+            <i class="large material-icons">add</i>
+        </a>
+    </div>
+ 
+    <!-- Materialize JavaScript einbinden -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>      
