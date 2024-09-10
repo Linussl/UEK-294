@@ -29,21 +29,21 @@
 /* bildschirmgrössen von 0 bis 600px background blue*/
 @media (max-width: 600px) {
   body {
-    background-color: blue;
+    background-color: rgb(207, 207, 255);
   }
 }
 
 /*bildschirmgrössen von 601 bis 1200px background red*/
 @media (max-width: 1200px) and (min-width: 601px) {
   body {
-    background-color: red;
+    background-color: rgb(251, 183, 183);
   }
 }
 
 /* bildschirmgrössen von 1201 bis 1800 background green*/
 @media (max-width: 1800px) and (min-width: 1201px) {
   body {
-    background-color: green;
+    background-color: rgb(203, 255, 203);
   }
 }
 
