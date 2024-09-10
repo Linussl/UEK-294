@@ -1,3 +1,14 @@
+$.getJSON("data.json", function (response) {
+    //console.log(response);
+     $.get("template.hbs", function(template){
+     //console.log(template);
+     var compiled = Handlebars.compile(template);
+     var html = compiled(response);
+    //console.log(html);
+     $('main').append(html);
+ });
+});
+
 $(document).ready(function() {
     let carId = 4; // Start ID für neue Autos (nach den bestehenden)
  

@@ -1,0 +1,14 @@
+{
+    "data":[
+        {
+            "id": 1,
+            "name": "Passat",
+            "kraftstoff": "Diesel",
+            "farbe": "pink",
+            "bauart": "Kleinwagen",
+            "tank": 0
+            
+        } 
+    ]
+
+}
