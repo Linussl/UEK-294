@@ -38,6 +38,39 @@
         <input type="submit" value="senden" name="submit">
     </form>
  
+    <p id="anzeigen"></p>
+
+<script>
+    $('input#name').val('Jaaaa');
+    //classs valid hinzufügen
+    $('input#name').addClass('valid');
+    M.updateTextFields();
+
+    // AJAX-Request
+
+    $('form').submit(function(e){
+        e.preventDefault();
+
+        $.ajax({
+            type: "post",
+            url: "api.php?feld1=Hans",
+            data: {
+                name: $('input#name').val(),
+                strasse:  $('input#strasse').val(),
+                vorname:  $('input#vorname').val()
+            },
+            dataType: "html",
+            success: function (response) {
+                // response in #anzeigen anzeigen
+                $('#anzeigen').html(response);
+            }
+        });
+
+});
+
+</script>
+
+
 </body>
  
 </html>
