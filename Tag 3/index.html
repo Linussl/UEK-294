@@ -11,6 +11,29 @@
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <title>Titel der Seite</title>
+
+<style>
+       /* Label - Text Farbe bei focus */
+       .input-field input:focus+label {
+            color: rgb(243, 183, 234) !important;
+        }
+
+        /* Input Feld - underline color bei focus */
+        .input-field input[type=text]:focus {
+            border-bottom: 2px solid rgb(243, 183, 234) !important;
+            -webkit-box-shadow: 0 2px 0 0 rgb(243, 183, 234) !important;
+            -moz-box-shadow: 0 2px 0 0 rgb(243, 183, 234) !important;
+            box-shadow: 0 2px 0 0 rgb(243, 183, 234) !important;
+        }
+
+        /* ICON - Farbe bei active*/
+        .input-field .prefix.active {
+            color: rgb(243, 183, 234) !important;
+        }
+</style>
+
+
+
 </head>
  
 <body>
