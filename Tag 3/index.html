@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+ 
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Titel der Seite</title>
+</head>
+ 
+<body>
+    <form action="api.php?feld1=Hans" method="post">
+ 
+        <div class="input-field">
+            <input type="text" name="name" id="name" minlength="2" maxlength="4">
+            <label for="name">Gib hier deinen Namen ein: </label>
+        </div>
+ 
+       
+        <div class="input-field">
+            <i class="material-icons prefix">home</i>
+            <input type="text" name="strasse" id="strasse">
+            <label for="strasse">Wohnort </label>
+        </div>
+ 
+        <div class="input-field">
+            <input type="text" name="vorname" id="vorname" placeholder="Gib hier deinen Vornamen ein: : ">
+        </div>
+ 
+        <input type="submit" value="senden" name="submit">
+    </form>
+ 
+</body>
+ 
+</html>
