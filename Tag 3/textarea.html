@@ -1,0 +1,98 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Textarea Auswahl</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style>
+        .topmargin {
+            margin-top: 30px;
+        }
+
+        /* Textarea focus styles */
+        .input-field textarea:focus {
+            border-bottom: 2px solid red !important;
+            -webkit-box-shadow: 0 2px 0 0 red !important;
+            -moz-box-shadow: 0 2px 0 0 red !important;
+            box-shadow: 0 2px 0 0 red !important;
+        }
+
+        .dropdown-content li>a,
+        .dropdown-content li>span {
+            color: black;
+        }
+
+        #Absatz1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        // JQuery - Document ready
+        $(function () {
+            // Initialization der select
+            $('select').formSelect();
+
+            // Click - Event
+            $('#WerteLesen').click(function () {
+                // Funktion aufrufen
+                getValue();
+            });
+
+            // Zeichenanzahl für das Textarea aktivieren
+            $('#textarea1').characterCounter();
+        });
+
+        function getValue() {
+            // Werte auslesen
+            var textContent = $('#textarea1').val();
+            var textLimit = $('#textLimitSelect').val();
+
+            // Ausgabe mit dem Text und der gewählten Zeichenanzahl
+            if (textContent.length > textLimit) {
+                alert("Der Text überschreitet das Limit von " + textLimit + " Zeichen!");
+            } else {
+                $('body').append('<p>Eingegebener Text: ' + textContent + ' (Limit: ' + textLimit + ' Zeichen)</p>');
+            }
+        }
+    </script>
+
+    <h2 class="center">Textarea mit Zeichenlimit</h2> 
+    <hr> 
+
+    <!-- Textarea für die Eingabe -->
+    <h3 class="center">Text eingeben</h3> 
+    <div class="topmargin row"> 
+        <div class="input-field col s6 offset-s3"> 
+            <textarea id="textarea1" class="materialize-textarea" data-length="100"></textarea>
+            <label for="textarea1">Gib hier deinen Text ein:</label>
+        </div> 
+    </div> 
+
+    <!-- Dropdown für das Zeichenlimit -->
+    <h3 class="center">Zeichenlimit wählen</h3> 
+    <div class="topmargin row"> 
+        <div class="input-field col s4 offset-s4"> 
+            <select id="textLimitSelect">
+                <option value="" disabled selected>Wähle ein Zeichenlimit</option>
+                <option value="50">50 Zeichen</option>
+                <option value="100">100 Zeichen</option>
+                <option value="200">200 Zeichen</option>
+            </select> 
+            <label>Zeichenlimit</label>
+        </div> 
+    </div> 
+
+    <!-- Button zum Werte auslesen -->
+    <p id="Absatz1"> 
+        <button class="btn" id="WerteLesen">Werte auslesen</button> 
+    </p>
+
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zahl Auswahl</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style>
+        .topmargin {
+            margin-top: 30px;
+        }
+
+        /* Input Feld - underline color bei focus */
+        .input-field input[type=number]:focus {
+            border-bottom: 2px solid red !important;
+            -webkit-box-shadow: 0 2px 0 0 red !important;
+            -moz-box-shadow: 0 2px 0 0 red !important;
+            box-shadow: 0 2px 0 0 red !important;
+        }
+
+        .dropdown-content li>a,
+        .dropdown-content li>span {
+            color: black;
+        }
+
+        #Absatz1 {
+            text-align: center;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        // JQuery - Document ready
+        $(function () {
+            // Initialization der select
+            $('select').formSelect();
+
+            // Click - Event
+            $('#WerteLesen').click(function () {
+                // Funktion aufrufen
+                getValue();
+            });
+        });
+
+        function getValue() {
+            // Werte auslesen
+            var lowerLimit = $('#vonSelect').val();
+            var upperLimit = $('#bisSelect').val();
+
+            // Überprüfen ob die Auswahl sinnvoll ist
+            if (parseInt(lowerLimit) > parseInt(upperLimit)) {
+                alert("Die untere Grenze darf nicht größer als die obere Grenze sein.");
+            } else {
+                $('body').append('<p>Ausgewählter Bereich: Von ' + lowerLimit + ' bis ' + upperLimit + '</p>');
+            }
+        }
+    </script>
+
+    <h2 class="center">Zahl Auswahl (Von - Bis)</h2> 
+    <hr> 
+
+    <!-- Dropdown für "Von" -->
+    <h3 class="center">Untere Grenze wählen</h3> 
+    <div class="topmargin row"> 
+        <div class="input-field col s4 offset-s4"> 
+            <select id="vonSelect">
+                <option value="" disabled selected>Wähle den Startwert</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select> 
+            <label>Untere Grenze (Von)</label> 
+        </div> 
+    </div> 
+
+    <!-- Dropdown für "Bis" -->
+    <h3 class="center">Obere Grenze wählen</h3> 
+    <div class="topmargin row"> 
+        <div class="input-field col s4 offset-s4"> 
+            <select id="bisSelect">
+                <option value="" disabled selected>Wähle den Endwert</option>
+                <option value="1">1</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="4">4</option>
+                <option value="5">5</option>
+                <option value="6">6</option>
+                <option value="7">7</option>
+                <option value="8">8</option>
+                <option value="9">9</option>
+                <option value="10">10</option>
+            </select> 
+            <label>Obere Grenze (Bis)</label> 
+        </div> 
+    </div> 
+
+    <!-- Button zum Werte auslesen -->
+    <p id="Absatz1"> 
+        <button class="btn" id="WerteLesen">Werte auslesen</button> 
+    </p>
+
+</body>
+</html>

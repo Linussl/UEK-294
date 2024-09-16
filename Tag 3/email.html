@@ -3,17 +3,17 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Dropdown</title>
+    <title>Email Dropdown</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
     <style>
-          .topmargin {
+        .topmargin {
             margin-top: 30px;
         }
 
         /* Input Feld - underline color bei focus */
-        .input-field input[type=text]:focus {
+        .input-field input[type=email]:focus {
             border-bottom: 2px solid red !important;
             -webkit-box-shadow: 0 2px 0 0 red !important;
             -moz-box-shadow: 0 2px 0 0 red !important;
@@ -25,23 +25,20 @@
             color: black;
         }
 
-
         #Absatz1 {
             text-align: center;
         }
-   
     </style>
 </head>
 <body>
 
     <script>
-
         // JQuery - Document ready
         $(function () {
             // Initialization der select
             $('select').formSelect();
 
-            setTimeout(InputSet, 2000); // zwei sekunden warten, dann funktion aufrufen
+            setTimeout(InputSet, 2000); // zwei Sekunden warten, dann Funktion aufrufen
 
             // Click - Event
             $('#WerteLesen').click(function () {
@@ -49,55 +46,54 @@
                 getValue();
             });
         });
+
         function InputSet() {
-            // Wert setzten
-            $('#select2').val('g');
+            // Wert setzen
+            $('#emailProvider').val('g');
             $('select').formSelect();
             console.info('Select aktualisiert');
         }
+
         function getValue() {
-            // Wert lesen
-            var tmpVar1 = $('#select1').val();
-            console.warn('Wert im select 1: ' + tmpVar1);
-            var tmpVar2 = $('#select2').val();
-            console.warn('Wert im select 2: ' + tmpVar2);
-            $('body').append( tmpVar1 + ' / ' + tmpVar2);
+            // Werte lesen
+            var emailAddress = $('#email').val();
+            var emailProvider = $('#emailProvider').val();
+            console.warn('E-Mail-Adresse: ' + emailAddress);
+            console.warn('Provider: ' + emailProvider);
+            $('body').append('<p>E-Mail: ' + emailAddress + ' @ ' + emailProvider + '.com</p>');
         }
     </script>
-    <h2 class="center">Select</h2> 
-    <p id="Absatz1"> 
-        <a class="center" href="https://materializecss.com/select.html" 
-            target="_blank">https://materializecss.com/select.html</a> 
-    </p> 
+
+    <h2 class="center">Email Dropdown</h2> 
     <hr> 
- 
-    <h3 class="center">Select mit HTML selected</h3> 
+
+    <!-- Email Eingabe -->
+    <h3 class="center">E-Mail Adresse eingeben</h3> 
     <div class="topmargin row"> 
         <div class="input-field col s4 offset-s4"> 
-            <select id="select1"> 
-                <option value="" disabled selected>Choose your option</option> 
-                <option value="1">Option 1</option> 
-                <option value="2">Option 2</option> 
-                <option value="3">Option 3</option> 
-            </select> 
-            <label>Materialize Select</label> 
-        </div> 
+            <input id="email" type="email" class="validate" required>
+            <label for="email">Gib hier deine E-Mail-Adresse ein:</label>
+        </div>
     </div> 
- 
-    <h3 class="center">Select mit JS selected</h3> 
-    <p class="center">Wert wird nach 2 Sekunden gesetzt.</p> 
+
+    <!-- Dropdown für Provider -->
+    <h3 class="center">Provider wählen</h3> 
     <div class="topmargin row"> 
         <div class="input-field col s4 offset-s4"> 
-            <select id="select2"> 
-                <option value="r">Rot</option> 
-                <option value="g">Grün</option> 
-                <option value="b">Blau</option> 
+            <select id="emailProvider">
+                <option value="" disabled selected>Choose your provider</option>
+                <option value="gmail">Gmail</option>
+                <option value="yahoo">Yahoo</option>
+                <option value="outlook">Outlook</option>
             </select> 
-            <label>Materialize Select</label> 
+            <label>Wähle deinen E-Mail Provider</label>
         </div> 
     </div> 
+
+    <!-- Button zum Werte auslesen -->
     <p id="Absatz1"> 
         <button class="btn" id="WerteLesen">Werte auslesen</button> 
     </p>
+
 </body>
 </html>

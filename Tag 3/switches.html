@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switches</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style>
+        .topmargin {
+            margin-top: 30px;
+        }
+
+        /* Zentrieren des Buttons und der Switches */
+        .center-align {
+            text-align: center;
+        }
+
+        /* Abstand zwischen den Elementen */
+        .spacer {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        // JQuery - Document ready
+        $(function () {
+            // Click - Event
+            $('#WerteLesen').click(function () {
+                // Funktion aufrufen
+                getSwitchValues();
+            });
+        });
+
+        function getSwitchValues() {
+            // Status der Switches auslesen
+            var switch1 = $('#switch1').is(':checked') ? 'Ein' : 'Aus';
+            var switch2 = $('#switch2').is(':checked') ? 'Ein' : 'Aus';
+
+            // Ausgabe der Switch-Status
+            $('body').append('<p>Switch 1: ' + switch1 + '</p>');
+            $('body').append('<p>Switch 2: ' + switch2 + '</p>');
+        }
+    </script>
+
+    <div class="container">
+        <h2 class="center-align">Switches</h2>
+        <hr>
+
+        <!-- Switches zur Auswahl -->
+        <h4 class="center-align">Wähle die Optionen</h4>
+        <div class="row topmargin center-align">
+            <div class="input-field col s6 offset-s3">
+                <p>
+                    <label>
+                        <input type="checkbox" id="switch1" />
+                        <span>Option 1</span>
+                    </label>
+                </p>
+                <p>
+                    <label>
+                        <input type="checkbox" id="switch2" />
+                        <span>Option 2</span>
+                    </label>
+                </p>
+            </div>
+        </div>
+
+        <!-- Button zum Auslesen der Switch-Werte -->
+        <div class="row center-align spacer">
+            <button class="btn" id="WerteLesen">Werte auslesen</button>
+        </div>
+    </div>
+
+</body>
+</html>

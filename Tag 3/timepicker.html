@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Time Picker</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style>
+        .topmargin {
+            margin-top: 30px;
+        }
+
+        /* Zentrieren des Buttons und Eingabefeldes */
+        .center-align {
+            text-align: center;
+        }
+
+        /* Abstand zwischen den Elementen */
+        .spacer {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <script>
+        // JQuery - Document ready
+        $(function () {
+            // Initialization von Timepicker
+            $('.timepicker').timepicker();
+
+            // Click - Event
+            $('#WerteLesen').click(function () {
+                // Funktion aufrufen
+                getTimeValue();
+            });
+        });
+
+        function getTimeValue() {
+            // Ausgewählte Zeit auslesen
+            var selectedTime = $('#timeInput').val();
+
+            // Ausgabe der gewählten Zeit
+            $('body').append('<p>Ausgewählte Zeit: ' + selectedTime + '</p>');
+        }
+    </script>
+
+    <div class="container">
+        <h2 class="center-align">Time Picker</h2>
+        <hr>
+
+        <!-- Time Picker für die Zeitauswahl -->
+        <h4 class="center-align">Zeit auswählen</h4> 
+        <div class="row topmargin center-align">
+            <div class="input-field col s6 offset-s3">
+                <input type="text" id="timeInput" class="timepicker">
+                <label for="timeInput">Wähle eine Zeit</label>
+            </div>
+        </div>
+
+        <!-- Button zum Werte auslesen -->
+        <div class="row center-align spacer">
+            <button class="btn" id="WerteLesen">Werte auslesen</button>
+        </div>
+    </div>
+
+</body>
+</html>
