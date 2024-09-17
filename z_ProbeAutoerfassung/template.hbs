@@ -1,0 +1,54 @@
+<table border="1">
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Kraftstoff</th>
+            <th>Farbe</th>
+            <th>Bauart</th>
+            <th>Tank</th>
+            <th>Datum</th>
+            <th>Bemerkung</th>
+            <th>Status</th>
+            <th>action</th>
+        </tr>
+    </thead>
+    <tbody>
+        {{#each data}}
+        <tr>
+            <td>{{id}}</td>
+            <td>{{name}}</td>
+            <td>{{kraftstoff}}</td>
+            <td>
+                <input type="color">
+            </td>
+            <td>{{bauart}}</td>
+            <td>{{tanken}}</td>
+            <td>{{date}}</td>
+            <td>{{bemerkungen}}</td>
+            <td>
+                <label>
+                    <input type="checkbox">
+                    <span class="checkbox-box"></span>
+                </label>
+            </td>
+            <td>
+
+                <span class="material-symbols-outlined edit icon">
+                    edit
+                </span>
+
+                <span class="material-symbols-outlined tank icon" data-id="{{id}}">
+                    propane_tank
+                </span>
+
+                <span class="material-symbols-outlined delete icon" data-id="{{id}}">
+                    delete
+                </span>
+
+            </td>
+        </tr>
+        {{/each}}
+    </tbody>
+</table>
+
