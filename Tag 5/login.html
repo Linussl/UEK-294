@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+</head>
+
+<body>
+    <input type="text" name="loginname" id="loginname">
+    <input type="password" name="password" id="password">
+
+    <input type="submit" value="login" name="login" id="login">
+    <input type="submit" value="logout" name="logout" id="logout">
+
+
+    <script>
+
+        
+
+        $('#logout').hide();
+
+        $('#login').click(function (e) {
+            e.preventDefault();
+            var loginname = $('#loginname').val();
+            var password = $('#password').val();
+
+            $.ajax({
+                type: "login",
+                url: "./API/api.php?username=" + loginname + "&password=" + password,
+                dataType: "json",
+                success: function (response) {
+                    console.log(response);
+                    if (response['jwt'].admin) {
+                        $('#login').hide();
+                        $('#logout').show();
+                        $('#loginname').hide();
+                        $('#password').hide();
+                    } else {
+                        $('#login').show();
+                        $('#logout').hide();
+                        $('#loginname').show();
+                        $('#password').show();
+
+                    }
+
+                }
+            });
+        });
+
+        $('#logout').click(function (e) {
+            e.preventDefault();
+            $.ajax({
+                type: "logout",
+                url: "./API/api.php",
+                dataType: "json",
+                success: function (response) {
+                    if (response['jwt'].admin) {
+                        $('#login').show();
+                        $('#logout').hide();
+                        $('#loginname').show();
+                        $('#password').show();
+                    } else {
+                        $('#login').show();
+                        $('#logout').hide();
+                        $('#loginname').show();
+                        $('#password').show();
+
+                    }
+                }
+            });
+        });
+
+    </script>
+
+</body>
+
+</html>

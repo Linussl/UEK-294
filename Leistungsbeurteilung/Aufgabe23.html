@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Bibliothek</title>
+    <style>
+        .card { margin: 20px; }
+        .stock-icon { font-size: 24px; vertical-align: middle; }
+        .in-stock { color: green; }
+        .out-of-stock { color: red; }
+        .stock-info { display: flex; justify-content: space-between; align-items: center; }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Bibliothek</h1>
+        <input type="text" id="search" placeholder="Suche nach Büchern, Autoren oder Rezensionen" />
+        <select id="sort">
+            <option value="title">Nach Titel sortieren</option>
+            <option value="publicationDate">Nach Veröffentlichungsdatum sortieren</option>
+        </select>
+        <div id="books" class="row"></div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            let books = [];
+
+            fetch('DATA.JSON')
+                .then(response => {
+                    if (!response.ok) throw new Error('Netzwerkfehler');
+                    return response.json();
+                })
+                .then(data => {
+                    books = data;
+                    displayBooks(books);
+                })
+                .catch(error => {
+                    console.error('Fehler beim Laden der Daten:', error);
+                    document.getElementById('books').innerHTML = '<p>Fehler beim Laden der Bücher.</p>';
+                });
+
+            function displayBooks(books) {
+                const booksContainer = document.getElementById('books');
+                booksContainer.innerHTML = '';
+
+                books.forEach(book => {
+                    const card = document.createElement('div');
+                    card.className = 'col s12 m6 l4';
+                    card.innerHTML = `
+                        <div class="card" tabindex="0">
+                            <div class="card-content">
+                                <span class="card-title">${book.title}</span>
+                                <p>Veröffentlicht am: ${book.publicationDate}</p>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Autor</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${book.authors.map(author => `<tr><td>${author.firstName} ${author.lastName}</td></tr>`).join('')}
+                                    </tbody>
+                                </table>
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Rezension</th>
+                                            <th>Bewertung</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        ${book.reviews.map(review => `<tr><td>${review.reviewer}: ${review.text}</td><td>${review.rating}</td></tr>`).join('')}
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div class="card-action">
+                                <div class="stock-info">
+                                    <span>Lagerbestand:</span>
+                                    <span class="material-icons stock-icon ${book.stock > 0 ? 'in-stock' : 'out-of-stock'}">
+                                        ${book.stock > 0 ? 'check_box' : 'indeterminate_check_box'}
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                    `;
+                    booksContainer.appendChild(card);
+
+
+                    card.addEventListener('dblclick', (e) => {
+                        e.preventDefault();
+                        if (confirm('Möchten Sie diese Karte wirklich entfernen?')) {
+                            card.remove();
+                        }
+                    });
+                });
+            }
+
+            document.getElementById('search').addEventListener('input', (e) => {
+                const query = e.target.value.toLowerCase();
+                const filteredBooks = books.filter(book => 
+                    book.title.toLowerCase().includes(query) ||
+                    book.authors.some(author => `${author.firstName} ${author.lastName}`.toLowerCase().includes(query)) ||
+                    book.reviews.some(review => review.text.toLowerCase().includes(query))
+                );
+                displayBooks(filteredBooks);
+            });
+
+            document.getElementById('sort').addEventListener('change', (e) => {
+                const sortBy = e.target.value;
+                books.sort((a, b) => {
+                    if (sortBy === 'title') {
+                        return a.title.localeCompare(b.title);
+                    } else if (sortBy === 'publicationDate') {
+                        return new Date(a.publicationDate) - new Date(b.publicationDate);
+                    }
+                });
+                displayBooks(books);
+            });
+        });
+    </script>
+</body>
+</html>

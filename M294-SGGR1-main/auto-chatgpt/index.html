@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Materialize CSS Tabelle</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script type="module" src="index.js" defer></script>
+</head>
+<body>
+
+    <nav class="orange lighten-3">
+        <div class="nav-wrapper">
+            <a href="#" class="brand-logo">LOGO</a>
+            <ul id="nav-mobile" class="right hide-on-med-and-down">
+                <li><a href="#">MATERIALIZE CSS</a></li>
+                <li><a href="#">GEEKLAPS</a></li>
+                <li><a href="#">MOODLE</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <table class="striped grey lighten-2">
+            <thead>
+                <tr>
+                    <th>id</th>
+                    <th>name</th>
+                    <th>kraftstoff</th>
+                    <th>farbe</th>
+                    <th>bauart</th>
+                    <th>tank</th>
+                    <th>action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Passat</td>
+                    <td>Diesel</td>
+                    <td><span class="color-box" style="background-color: #000000;"></span> #000000</td>
+                    <td>Limousine</td>
+                    <td>0</td>
+                    <td>
+                        <i class="material-icons action-icon edit">edit</i>
+                        <i class="material-icons action-icon delete">delete</i>
+                        <i class="material-icons action-icon drive">directions_car</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Opel</td>
+                    <td>Benzin</td>
+                    <td><span class="color-box" style="background-color: #008888;"></span> #008888</td>
+                    <td>SUV</td>
+                    <td>0</td>
+                    <td>
+                        <i class="material-icons action-icon edit">edit</i>
+                        <i class="material-icons action-icon delete">delete</i>
+                        <i class="material-icons action-icon drive">directions_car</i>
+                    </td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>VW</td>
+                    <td>Elektro</td>
+                    <td><span class="color-box" style="background-color: #006666;"></span> #006666</td>
+                    <td>Pickup</td>
+                    <td>0</td>
+                    <td>
+                        <i class="material-icons action-icon edit">edit</i>
+                        <i class="material-icons action-icon delete">delete</i>
+                        <i class="material-icons action-icon drive">directions_car</i>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <div class="fixed-action-btn">
+            <a class="btn-floating btn-large red add-btn">
+                <i class="large material-icons">add</i>
+            </a>
+        </div>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+<table id="meins">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Name</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    {{#each data}}
+      <tr data-id="{{id}}">
+        <td>{{id}}</td>
+        <td>{{name}}</td>
+        <td>
+          <button class="edit btn">edit</button>
+        </td>
+      </tr>
+    {{/each}}
+  </tbody>
+</table>

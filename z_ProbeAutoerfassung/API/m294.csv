@@ -1,2 +1,3 @@
 id;name;kraftstoff;farbe;bauart;tanken;date;bemerkung;status
-1;Opel;Diesel;blau;SUV;10;1.5.2000;Beschreibung 01;checked
+1;Timo;Diesel;#000ff;Breit;17;01.02.2007;bemerkung;status
+2;Hans;Benzin;rot;Narbe;29;01.02;bemerkung;status

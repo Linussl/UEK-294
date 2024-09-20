@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <style>
+        .topmargin {
+            margin-top: 30px;
+        }
+
+        #Absatz1 {
+            text-align: center;
+        }
+
+        .datepicker-date-display {
+            background-color: #565555; 
+        }
+
+        .datepicker-table td.is-selected {
+            background-color: #343232; 
+            color: white;
+        }
+        
+        .datepicker-table td.is-today {
+            background-color: #4f4f4f; 
+            color: white;
+        }
+
+        .datepicker-day-button:focus {
+            background-color: #8c8c8c; 
+        }
+
+        .datepicker-cancel,
+        .datepicker-clear,
+        .datepicker-today,
+        .datepicker-done {
+            color: black;
+        }
+
+        .month-prev, .month-next, .select-month, .select-year {
+            display: none; 
+        }
+
+        .dropdown-content li>a,
+        .dropdown-content li>span {
+            color: #8e8ec7;
+        }
+    </style>
+</head>
+<body>
+    <script>
+        $(function () {
+            setTimeout(setDate, 200); 
+
+            $('#WerteLesen').click(function () {
+                getValue();
+            });
+        });
+
+        function setDate() {
+            var today = new Date();
+            var formattedToday = ('0' + today.getDate()).slice(-2) + '.' + ('0' + (today.getMonth() + 1)).slice(-2) + '.' + today.getFullYear();
+            $('#mydate').val(formattedToday);
+
+            $('.datepicker').datepicker({
+                format: 'dd.mm.yyyy',
+                setDefaultDate: true,
+                firstDay: 1,
+                minDate: today,
+                maxDate: new Date(today.getTime() + 3 * 24 * 60 * 60 * 1000),
+                i18n: {
+                    months: ['Januar', 'Februar', 'März', 'April', 'Mai', 'Juni', 'Juli', 'August', 'September', 'Oktober', 'November', 'Dezember'],
+                    monthsShort: ['Jan', 'Feb', 'Mär', 'Apr', 'Mai', 'Jun', 'Jul', 'Aug', 'Sep', 'Okt', 'Nov', 'Dez'],
+                    weekdays: ['Sonntag', 'Montag', 'Dienstag', 'Mittwoch', 'Donnerstag', 'Freitag', 'Samstag'],
+                    weekdaysShort: ['So', 'Mo', 'Di', 'Mi', 'Do', 'Fr', 'Sa'],
+                    today: 'Heute',
+                    clear: 'Löschen',
+                    close: 'Schließen',
+                },
+                onClose: function() {
+                    const selectedDate = $('#mydate').val();
+                    const dateObj = new Date(selectedDate.split('.').reverse().join('-'));
+                    const todayPlusThreeDays = new Date(today.getTime() + 3 * 24 * 60 * 60 * 1000);
+                    
+                    if (dateObj > todayPlusThreeDays) {
+                        M.toast({html: 'Dieses Datum kann nicht ausgewählt werden!', displayLength: 3000});
+                        $('#mydate').val(''); 
+                    }
+                }
+            });
+        }
+
+        function getValue() {
+            const selectedDate = $('#mydate').val();
+            const dateObj = new Date(selectedDate.split('.').reverse().join('-'));
+            const todayPlusThreeDays = new Date(new Date().getTime() + 3 * 24 * 60 * 60 * 1000);
+            
+            if (dateObj > todayPlusThreeDays) {
+                return;
+            }
+
+            console.log(selectedDate);
+            $('body').append('<hr><p id="Absatz1">Datum: ' + selectedDate +'</p>');
+        }
+    </script>
+    <h2 class="center">Date Picker</h2> 
+    <p id="Absatz1"> 
+        <a class="center" href="https://materializecss.com/pickers.html" 
+            target="_blank">https://materializecss.com/pickers.html</a> 
+    </p> 
+    <hr> 
+
+    <h3 class="center">Datum</h3> 
+    <p class="center">Per JS wird nach 0,2 Sekunden das aktuelle Datum gesetzt.</p> 
+    <div class="topmargin row"> 
+        <div class="input-field col s4 offset-s4"> 
+            <input id="mydate" type="text" class="datepicker" /> 
+        </div> 
+    </div> 
+
+    <p id="Absatz1"> 
+        <button class="btn" id="WerteLesen">Werte auslesen</button> 
+    </p>
+</body>
+</html>

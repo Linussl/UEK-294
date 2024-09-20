@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+    <title>Titel der Seite</title>
+  </head>
+  <body>
+    <main></main>
+
+    <script>
+
+
+
+      // 1. Daten von der API holen (via GET-Anfrage)
+      const fetchData = $.ajax({
+        type: "get",
+        url: "./../Tag3/api/api.php",
+        dataType: "json",
+      });
+
+      // 2. Template holen (via GET-Anfrage)
+      const fetchTemplate = $.get("./../Tag3/auto.hbs");
+
+      // Promises verarbeiten
+      Promise.all([fetchData, fetchTemplate])
+        .then(function ([data, template]) {
+          // Beide Anfragen erfolgreich: 'data' ist die API-Antwort, 'template' ist das HBS-Template
+
+          // 3. Template kompilieren
+          const compiled = Handlebars.compile(template);
+
+          // 4. Daten in das Template einfügen
+          const html = compiled(data);
+
+          // 5. HTML in die Seite einfügen
+          $("main").html(html);
+        })
+        .catch(function (error) {
+          // Fehlerbehandlung
+          console.error(
+            "Fehler beim Abrufen der Daten oder des Templates:",
+            error
+          );
+        });
+
+    </script>
+  </body>
+</html>

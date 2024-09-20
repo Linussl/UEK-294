@@ -1,0 +1,82 @@
+@startuml
+
+title M294 - Diagramm - index.html 
+'!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+'!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4.puml
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+
+' Vertikale Anordnung: top to bottom
+' top to bottom direction
+left to right direction
+
+' Benutzer, der die Webseite verwendet
+Person(browser, "User", "Webseite öffnen")
+
+Boundary(boundary, "Bibliotheken") {
+    Component(handlebars, "Handlebars.js", "JS library", "Renders JSON to HTML") #LightGreen
+    Component(materialize, "Materialize.css", "CSS library", "CSS Framework") #LightGreen
+    Component(materialize_js, "Materialize.js", "JS library", "JS Framework") #LightGreen
+    Component(jquery, "jQuery.js", "JS library", "JS Framework") #LightGreen
+}
+
+' Browser-Komponente mit JavaScript, Handlebars und index.html
+System_Boundary(browser_system, "Browser") {
+    Container(index_html, "index.html", "HTML", "Webseite") #Blue
+    Container(js_code, "JavaScript", "JS", "ES6 JavaScript code")  #Blue
+    Component(new_data, "Klick New Data", "JS", "Load Modal & Form") #yellow
+}
+
+
+
+
+System_Boundary(js, "Java Script Funktionen (ES6)") {
+    Container( renderData, "renderData", "JS Funktionen", "rendert Daten in HTML") #red
+    Container( getData, "getData", "JS Funktionen", "holt Daten von der API") #red
+    Container( getDataID, "getDataID", "JS Funktionen", "holt Daten von einem Datensatz der API") #red
+    Container( postData, "postData", "JS Funktionen", "schreibt Daten in die API") #red 
+    Container( deleteData, "deleteData", "JS Funktionen", "löscht Daten von der API")#red
+}
+
+System_Boundary(API, "API (PHP)") {
+    ' API-Komponente, die JSON-Daten liefert
+    Container(api_php, "api.php", "PHP", "Returns data as JSON") #black
+    ContainerDb(data_csv, "data.csv", "CSV", "Data source") #black
+}
+Container(template_html, "template.hbs", "HBS", "Template") #Blue
+Container(form_html, "form.html", "HTML", "Formular") #Blue
+
+' Datenbank als CSV-Datei, die als Datenquelle dient
+
+
+'Component(component, "User Service", "Java", "Handles user-related operations")
+
+
+
+'Rel_Down(user, web_app, "Uses", "HTTP")
+'Rel_Up(web_app, db, "Reads", "SQL")
+
+'Container_Boundary(container_boundary, "Web App Boundary") {
+'    Component(component1, "Authentication Service", "Provides login functionality")
+'    Component(component2, "User Profile Service", "Manages user profiles")
+'}
+
+
+' Relationen zwischen den Komponenten
+Rel(browser, index_html, "Requests")
+Rel(index_html, boundary, "Lade Bibliotheken im head")
+Rel(index_html, js_code,  "Lade JavaScript Funktionen als modulare Komponente")
+Rel(js_code, renderData, "import Funktionen")
+
+Rel(renderData, api_php, "Stellt Daten in HTML dar") 
+Rel(getData, api_php, "Gibt JSON Daten zurück")
+Rel(getDataID, api_php, "Gibt einen JSON Datesatz zurück")
+Rel(postData, api_php, "Übergibt Daten an die API")
+Rel(deleteData, api_php, "löscht Daten von der API")
+
+Rel(renderData, template_html, "hole Handlebars Template")
+Rel(api_php, data_csv, "CRUD Funktionen in CSV Datei umsetzen")
+
+Rel(js_code, new_data, "Modal anzeigen und Formular laden")
+Rel( new_data, form_html,"Modal anzeigen und Formular laden")
+@enduml

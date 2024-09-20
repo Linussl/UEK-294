@@ -1,0 +1,29 @@
+@startuml
+
+title M294 - Ablauf JSON darstellen
+
+!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Container.puml
+'!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4.puml
+'!includeurl https://raw.githubusercontent.com/plantuml-stdlib/C4-PlantUML/master/C4_Component.puml
+
+
+' Vertikale Anordnung: top to bottom
+top to bottom direction
+
+' Benutzer, der die Webseite verwendet
+Person(user, "User", "A regular user who interacts with the website")
+
+' Administrator, der erweiterte Berechtigungen hat
+Person(admin, "Admin", "Administrator with extended permissions")
+
+' Browser-Komponente mit JavaScript, Handlebars und index.html
+System_Boundary(browser_system, "Browser") {
+    Container(handlebars, "Handlebars.js", "JS library", "Renders JSON to HTML")
+    Container(index_html, "index.html", "HTML", "Renders the user interface")
+
+}
+
+
+Rel(index_html, handlebars, "Renders HTML to <main>")
+
+@enduml

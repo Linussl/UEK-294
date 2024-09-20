@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Aufgabe22</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+</head>
+<body>
+    <style>
+        #loader {
+            display: none;
+            border: 8px solid #f3f3f3;
+            border-top: 8px solid #3498db;
+            border-radius: 50%;
+            width: 50px;
+            height: 50px;
+            animation: spin 1s linear infinite; 
+            margin: 20px auto; 
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+    </style>
+
+<form id="insertForm">
+    <label for="vorname">Vorname:</label>
+    <input type="text" id="vorname" name="vorname" required>
+    <label for="wohnort">Wohnort:</label>
+    <input type="text" id="wohnort" name="wohnort" required>
+    <button type="submit">Absenden</button>
+</form>
+<div id="loader">Lade...</div>
+
+<script>
+    $(document).ready(function() {
+        $('#insertForm').on('submit', function(e) {
+            e.preventDefault(); 
+
+   
+            const vorname = $('#vorname').val();
+            const wohnort = $('#wohnort').val();
+
+
+            $('#loader').show();
+
+            $.ajax({
+                url: './API/api.php?id=0',
+                type: 'POST',
+                data: {
+                    // vorname: "Hans",
+                    // wohnort: "Frauenfeld",
+                    vorname: vorname,
+                    wohnort: wohnort
+
+                },
+                timeout: 5000,
+                success: function(response) {
+                    console.log(response); 
+                },
+                error: function(jqXHR, textStatus) {
+                    if (textStatus === 'timeout') {
+                        console.warn('API-Aufruf hat zu lange gedauert (Timedout).');
+                    } else {
+                        switch (jqXHR.status) {
+                            case 400:
+                                console.warn('400 - Ungültige Anfrage.');
+                                break;
+                            case 404:
+                                console.warn('404 - API nicht gefunden.');
+                                break;
+                            case 500:
+                                console.warn('500 - Interner Serverfehler.');
+                                break;
+                            default:
+                                console.warn('API-Aufruf fehlgeschlagen: ' + textStatus);
+                        }
+                    }
+                },
+                complete: function() {
+                    $('#loader').hide();
+                }
+            });
+        });
+    });
+</script>
+</body>
+</html>

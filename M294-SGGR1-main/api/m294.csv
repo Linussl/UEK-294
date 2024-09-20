@@ -1,0 +1,15 @@
+id;name;kraftstoff;farbe;bauart;tanken;date;bemerkung;status
+1;Opel;Diesel;blau;SUV;4;1.5.2000;Beschreibung 01;checked
+2;VW;Benzin;yellow;PKW;7;7.6.2017;Beschreibung 02;
+3;BMW;Diesel;green;Kombi;5;5.5.2015;Beschreibung 03;checked
+4;Audi;Benzin;red;Cabrio;6;6.6.2016;Beschreibung 04;
+5;Mercedes;Diesel;black;SUV;4;4.4.2014;Beschreibung 05;checked
+6;Ford;Benzin;white;PKW;7;7.7.2017;Beschreibung 06;
+7;Toyota;Diesel;blue;Kombi;5;5.5.2015;Beschreibung 07;checked
+8;Nissan;Benzin;yellow;Cabrio;6;6.6.2016;Beschreibung 08;
+9;Mazda;Diesel;green;SUV;4;4.4.2014;Beschreibung 09;checked
+10;Hyundai;Benzin;red;PKW;7;7.7.2017;Beschreibung 10;
+11;Kia;Diesel;black;Kombi;5;5.5.2015;Beschreibung 11;checked
+12;Fiat;Benzin;white;Cabrio;6;6.6.2016;Beschreibung 12;
+13;Renault;Diesel;blue;SUV;4;4.4.2014;Beschreibung 13;checked
+14;Peugeot;Benzin;yellow;PKW;7;7.7.2017;Beschreibung 14;

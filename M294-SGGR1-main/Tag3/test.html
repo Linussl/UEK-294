@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="materialize-src/sass/materialize.css">
+    <title>Titel der Seite</title>
+</head>
+<body>
+    <nav></nav>
+
+    <form action="api.php?feld1=harald" method="post">
+        <div class="input-field">
+            <input type="text" name="name" id="name" minlength="2" maxlength="4" data-length="4">
+            <label for="name">Gib hier Deinen Namen ein :</label>
+        </div>
+
+        <script>
+            $('input#name').characterCounter();
+        </script>
+
+        <div class="input-field">
+            <i class="material-icons prefix">home</i>
+            <input type="text" name="strasse" id="strasse">
+            <label for="strasse">Wohnort :</label>
+        </div>
+
+        <div class="input-field">
+            <input type="text" name="vorname" id="vorname" placeholder="Bitte Vorname eingeben:">
+        </div>
+
+        <input type="submit" value="senden" name="ich bin schön">
+    </form>
+
+
+</body>
+</html>

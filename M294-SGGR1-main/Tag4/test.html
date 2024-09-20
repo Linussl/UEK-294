@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+    <title>Titel der Seite</title>
+        <!-- Compiled and minified CSS -->
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+
+        <!-- Compiled and minified JavaScript -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+                
+  </head>
+  <body>
+    <main></main>
+
+      <!-- Modal Trigger -->
+    <a class="waves-effect waves-light btn modal-trigger" href="#modal1">Modal</a>
+
+    <!-- Modal Structure -->
+    <div id="modal1" class="modal">
+        <div class="modal-content">
+        <h4>Modal Header</h4>
+        <p>A bunch of text</p>
+        </div>
+        <div class="modal-footer">
+        <a href="#!" class="modal-close waves-effect waves-green btn-flat">Agree</a>
+        </div>
+    </div>
+
+    <script>    
+    $('.modal').modal();
+
+
+
+      // 1. Daten holen
+      $.ajax({
+        type: "get",
+        url: "api.php",
+        dataType: "json",
+        success: function (data) {
+          console.log(data);
+          // 2. Template holen
+          $.get("IhrFile.hbs", function (template) {
+            console.log(template);
+            // 3. Template kompilieren
+            const compiled = Handlebars.compile(template);
+            // 4. Daten in Template einfügen
+            const html = compiled(data);
+            // 5. HTML in die Seite einfügen
+            $("#mainAnzeige").html(html);
+          });
+        },
+      });
+
+
+
+
+
+
+
+
+      // 1. Daten von der API holen (via GET-Anfrage)
+      const fetchData = $.ajax({
+        type: "get",
+        url: "./../Tag3/api/api.php",
+        dataType: "json",
+      });
+      // 2. Template holen (via GET-Anfrage)
+      const fetchTemplate = $.get("./../Tag3/auto.hbs");
+      // Promises verarbeiten
+      Promise.all([fetchData, fetchTemplate])
+        .then(function ([data, template]) {
+          // Beide Anfragen erfolgreich: 'data' ist die API-Antwort, 'template' ist das HBS-Template
+          // 3. Template kompilieren
+          const compiled = Handlebars.compile(template);
+          // 4. Daten in das Template einfügen
+          const html = compiled(data);
+          // 5. HTML in die Seite einfügen
+          $("main").html(html);
+        })
+        .catch(function (error) {
+          // Fehlerbehandlung
+          console.error(
+            "Fehler beim Abrufen der Daten oder des Templates:",
+            error
+          );
+        });
+
+      // 2. Template holen
+      /* const template = `
+            <ul>
+                {{#each data}}
+                    <li>{{name}} - {{age}}</li>
+                {{/each}}
+            </ul>
+        `;
+      $.get("IhrFile.hbs", function (template) {
+        console.log(template);
+      });
+ */
+      // 3. Template kompilieren
+      //const compiled = Handlebars.compile(template);
+      // 4. Daten in Template einfügen
+      //const html = compiled(data);
+      // 5. HTML in die Seite einfügen
+      //$("main").html(html);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,28 @@
+id;name;kraftstoff;farbe;bauart;tanken;date;bemerkung;status
+1;Opel;Diesel;blau;SUV;4;1.5.2000;Beschreibung 01;checked
+2;VW;Benzin;yellow;PKW;7;7.6.2017;Beschreibung 02;
+3;BMW;Diesel;green;Kombi;5;5.5.2015;Beschreibung 03;checked
+4;Audi;Benzin;red;Cabrio;6;6.6.2016;Beschreibung 04;
+5;Mercedes;Diesel;black;SUV;4;4.4.2014;Beschreibung 05;checked
+6;Ford;Benzin;white;Kombi;5;5.5.2015;Beschreibung 06;
+7;Toyota;Diesel;blue;PKW;7;7.7.2017;Beschreibung 07;checked
+8;Nissan;Benzin;yellow;Cabrio;6;6.6.2016;Beschreibung 08;
+9;Mazda;Diesel;green;SUV;4;4.4.2014;Beschreibung 09;checked
+10;Hyundai;Benzin;red;Kombi;5;5.5.2015;Beschreibung 10;
+11;Kia;Diesel;black;PKW;7;7.7.2017;Beschreibung 11;checked
+12;Fiat;Benzin;white;Cabrio;6;6.6.2016;Beschreibung 12;
+13;Renault;Diesel;blue;SUV;4;4.4.2014;Beschreibung 13;checked
+14;Peugeot;Benzin;yellow;Kombi;5;5.5.2015;Beschreibung 14;
+15;Citroen;Diesel;green;PKW;7;7.7.2017;Beschreibung 15;checked
+16;Skoda;Benzin;red;Cabrio;6;6.6.2016;Beschreibung 16;
+17;Seat;Diesel;black;SUV;4;4.4.2014;Beschreibung 17;checked
+18;Volvo;Benzin;white;Kombi;5;5.5.2015;Beschreibung 18;
+19;Saab;Diesel;blue;PKW;7;7.7.2017;Beschreibung 19;checked
+20;Lada;Benzin;yellow;Cabrio;6;6.6.2016;Beschreibung 20;
+21;Dacia;Diesel;green;SUV;4;4.4.2014;Beschreibung 21;checked
+22;Lancia;Benzin;red;Kombi;5;5.5.2015;Beschreibung 22;
+23;Alfa Romeo;Diesel;black;PKW;7;7.7.2017;Beschreibung 23;checked
+24;Jaguar;Benzin;white;Cabrio;6;6.6.2016;Beschreibung 24;
+25;Land Rover;Diesel;blue;SUV;4;4.4.2014;Beschreibung 25;checked
+26;Porsche
+27;Ferrari

@@ -1,0 +1,22 @@
+[
+    {
+        "title": "Das Geheimnis",
+        "publicationDate": "2023-01-01",
+        "authors": [
+            {"firstName": "Max", "lastName": "Mustermann"}
+        ],
+        "reviews": [
+            {"reviewer": "Lisa", "text": "Ein spannendes Buch!", "rating": 5}
+        ],
+        "stock": 3
+    },
+    {
+        "title": "Die Reise",
+        "publicationDate": "2022-05-10",
+        "authors": [
+            {"firstName": "Erika", "lastName": "Mustermann"}
+        ],
+        "reviews": [],
+        "stock": 0
+    }
+]

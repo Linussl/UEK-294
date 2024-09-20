@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="de">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>M294 - LB</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.7.8/handlebars.min.js"></script>
+</head>
+
+<body>
+    <h1>M294 - LB</h1>
+    <h5>Aufgabe: 19</h5>
+    <hr />
+    <h5>Lösung:</h5>
+
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Setting Name</th>
+                <th>Setting Value</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>10422</td>
+                <td>LANG</td>
+                <td id="setting-value" class="editable">de-CH</td>
+            </tr>
+        </tbody>
+    </table>
+
+
+
+    <style>
+        body {
+            background-color: lightgray;
+        }
+
+        input {
+            width: 100%;
+        }
+
+        .error {
+            background-color: red;
+        }
+    </style>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const editableCells = document.querySelectorAll('.editable');
+
+            editableCells.forEach(cell => {
+                cell.addEventListener('click', () => makeEditable(cell));
+            });
+        });
+
+        function makeEditable(cell) {
+            const originalText = cell.innerText;
+            const input = document.createElement('input');
+            input.value = originalText;
+            cell.innerHTML = '';
+            cell.appendChild(input);
+            input.focus();
+
+            input.addEventListener('blur', () => handleBlur(cell, input, originalText));
+            input.addEventListener('keydown', (e) => {
+                if (e.key === 'Enter') {
+                    handleBlur(cell, input, originalText);
+                }
+            });
+        }
+
+        function handleBlur(cell, input, originalText) {
+            const newText = input.value.trim();
+
+            if (newText === '') {
+
+                cell.innerText = originalText;
+                console.log("no change");
+                return;
+            }
+
+            if (newText !== originalText) {
+                console.log("saving is required");
+                simulateSave(newText, cell, originalText);
+            } else {
+                console.log("no change");
+                cell.innerText = originalText;
+            }
+        }
+
+        function simulateSave(newText, cell, originalText) {
+            const success = Math.random() > 0.2
+            if (success) {
+                cell.innerText = newText;
+            } else {
+                cell.classList.add('error');
+                console.log("save failed");
+                setTimeout(() => {
+                    cell.classList.remove('error');
+                }, 2000);
+            }
+        }
+
+
+    </script>
+</body>
+
+</html>
